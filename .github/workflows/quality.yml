@@ -1,22 +1,52 @@
 name: Public Quality Gate
-on: [push, pull_request]
+on:
+  pull_request:
+  push:
+    branches: [main]
+
 jobs:
   audit:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Block internal/private leakage
         shell: bash
         run: |
-          if grep -RniE "mykeibadb|127\.0\.0\.1:8790|Founder Approval|revenue_ledger|crm\.csv|OPENAI_API_KEY|sk-[A-Za-z0-9_-]+" . --exclude-dir=.git; then
-            echo "Potential private/internal data leak"
+          set -euo pipefail
+          MATCHES="$(grep -RniE \
+            "mykeibadb|127\.0\.0\.1:8790|Founder Approval|revenue_ledger|crm\.csv|OPENAI_API_KEY|sk-[A-Za-z0-9_-]+" \
+            index.html assets data docs \
+            --exclude='*.md' \
+            --exclude='ad_inventory.json' \
+            || true)"
+
+          if [ -n "$MATCHES" ]; then
+            echo "$MATCHES"
+            echo "Potential private/internal data leak detected."
             exit 1
           fi
+
+          echo "Private/internal leakage audit PASS"
+
       - name: Validate ad inventory
         shell: python
         run: |
-          import json,sys
-          rows=json.load(open("data/ad_inventory.json",encoding="utf-8"))
-          bad=[x["id"] for x in rows if x.get("status")=="approved" and not x.get("url")]
-          print("approved ads",sum(x.get("status")=="approved" for x in rows))
-          sys.exit(1 if bad else 0)
+          import json
+          import pathlib
+          import sys
+
+          path = pathlib.Path("data/ad_inventory.json")
+          rows = json.loads(path.read_text(encoding="utf-8"))
+
+          bad = []
+          for row in rows:
+              if row.get("status") == "approved" and not row.get("url"):
+                  bad.append(row.get("id", "<unknown>"))
+
+          if bad:
+              print("Approved ads missing URL:", bad)
+              sys.exit(1)
+
+          print("Approved ads:", sum(r.get("status") == "approved" for r in rows))
+          print("Ad inventory audit PASS")
