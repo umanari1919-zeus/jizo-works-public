@@ -1,11 +1,223 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="JIZO WORKS — 面倒な仕事を、仕組みに変える。"><title>JIZO WORKS</title><link rel="stylesheet" href="assets/styles.css"></head><body>
-<header><div class="wrap head"><b>JIZO WORKS</b><nav><a href="#solve">解決する</a><a href="#services">サービス</a><a href="#discover">読む・比較する</a><a href="#deals">Deals</a></nav><a class="cta" href="#contact">無料相談</a></div></header>
-<main>
-<section class="hero"><div class="wrap hero-grid"><div><h1>面倒な仕事を、<br>仕組みに変える。</h1><p>データ整理、業務自動化、AI活用まで。小さく始めて、ちゃんと役に立つ仕組みを作ります。</p><a class="cta" href="#contact">無料で相談する →</a></div><div class="flow"><span>困りごと</span><i>↓</i><span>整理・自動化</span><i>↓</i><span>納品・再利用</span></div></div></section>
-<section id="solve" class="light"><div class="wrap"><h2>今すぐ使える</h2><div class="grid"><article><em>LIVE</em><h3>Automation ROI Calculator</h3><p>繰り返し作業の年間コストを計算。</p><button id="openCalc">計算する →</button></article><article><em>NEXT</em><h3>CSV Cleaner</h3><p>重複・欠損・表記揺れを診断。</p></article><article><em>NEXT</em><h3>Automation Check</h3><p>自動化向きかを簡易診断。</p></article><article><em>NEXT</em><h3>PDF Checker</h3><p>データ化しやすいPDFか判定。</p></article></div><div id="calc" class="calc hidden"><label>時給<input id="hourly" value="1800" type="number"></label><label>1回の分数<input id="minutes" value="45" type="number"></label><label>月回数<input id="monthly" value="20" type="number"></label><label>人数<input id="people" value="1" type="number"></label><button id="runCalc" class="cta">計算</button><div id="result"></div></div></div></section>
-<section id="services" class="section"><div class="wrap"><h2>頼みたい仕事</h2><div class="grid"><article><em>DATA</em><h3>Excel / CSV</h3></article><article><em>DOCUMENT</em><h3>PDF / 帳票</h3></article><article><em>AUTOMATION</em><h3>繰り返し作業</h3></article><article><em>AI</em><h3>AI業務改善</h3></article></div></div></section>
-<section id="discover" class="band"><div class="wrap"><h2>新しい道具と働き方を探す</h2><p>AI、テック、ゲーム、3D、バイブコーディング。</p><div class="chips"><button data-topic="ai">AI</button><button data-topic="vibe">Vibe Coding</button><button data-topic="game">Game</button><button data-topic="3d">3D</button><button data-topic="pc">PC / Device</button></div></div></section>
-<section id="deals" class="section"><div class="wrap"><h2>関連サービス・Deals</h2><p>承認済み広告だけを表示します。PR/広告表記を必須化。</p><div id="ads" class="adgrid"></div><div id="empty">現在、公開承認済みの広告はありません。</div></div></section>
-<section class="light"><div class="wrap statement"><h2>AIを使える人だけが得をする社会にしない。</h2><p>技術を、分かる人だけのものではなく、使える道具へ。</p></div></section>
-<section id="contact" class="contact"><div class="wrap"><h2>何を頼めばいいか分からなくても大丈夫です。</h2><p>公開用の連絡先はGitHub公開後に設定します。</p></div></section>
-</main><footer><div class="wrap">JIZO WORKS PUBLIC v1</div></footer><script type="module" src="assets/app.js"></script></body></html>
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="JIZO WORKS — 面倒な仕事を、仕組みに変える。Excel・CSV整理、業務自動化、AI活用を小さく始めるための実用サイト。">
+  <meta name="theme-color" content="#09131f">
+  <meta property="og:title" content="JIZO WORKS — 面倒な仕事を、仕組みに変える。">
+  <meta property="og:description" content="データ整理、業務自動化、AI活用まで。小さく始めて、ちゃんと役に立つ仕組みを作ります。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://umanari1919-zeus.github.io/jizo-works-public/">
+  <meta name="twitter:card" content="summary">
+  <link rel="manifest" href="manifest.webmanifest">
+  <title>JIZO WORKS — 面倒な仕事を、仕組みに変える。</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"JIZO WORKS",
+    "url":"https://umanari1919-zeus.github.io/jizo-works-public/",
+    "description":"データ整理、業務自動化、AI活用を小さく始めるための実用サイト"
+  }
+  </script>
+</head>
+<body>
+<header>
+  <div class="wrap head">
+    <a class="brand" href="#top">JIZO WORKS</a>
+    <nav>
+      <a href="#solve">解決する</a>
+      <a href="#services">サービス</a>
+      <a href="#discover">読む・比較する</a>
+      <a href="#deals">Deals</a>
+    </nav>
+    <a class="cta" href="#contact">無料相談</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>面倒な仕事を、<br>仕組みに変える。</h1>
+      <p>データ整理、業務自動化、AI活用まで。小さく始めて、ちゃんと役に立つ仕組みを作ります。</p>
+      <div class="hero-actions">
+        <a class="cta" href="#contact">無料で相談する →</a>
+        <a class="ghost" href="#solve">自分で解決する</a>
+      </div>
+    </div>
+    <div class="flow">
+      <span>困りごと</span><i>↓</i><span>整理・自動化</span><i>↓</i><span>納品・再利用</span>
+    </div>
+  </div>
+</section>
+
+<section id="solve" class="light">
+  <div class="wrap">
+    <div class="section-head">
+      <div><h2>今すぐ使える</h2><p>ブラウザ内だけで動く無料診断。CSVデータは外部送信しません。</p></div>
+      <span class="privacy-pill">LOCAL PROCESSING</span>
+    </div>
+
+    <div class="grid">
+      <article class="tool-card live">
+        <em>LIVE</em>
+        <h3>Automation ROI Calculator</h3>
+        <p>繰り返し作業の年間コストを計算。</p>
+        <button data-open="roi">計算する →</button>
+      </article>
+      <article class="tool-card live">
+        <em>LIVE</em>
+        <h3>Automation Check</h3>
+        <p>5問で自動化適性を簡易診断。</p>
+        <button data-open="automation">診断する →</button>
+      </article>
+      <article class="tool-card live">
+        <em>LIVE</em>
+        <h3>CSV Cleaner Scan</h3>
+        <p>行数・列数・空欄・重複をブラウザ内で診断。</p>
+        <button data-open="csv">CSVを診断 →</button>
+      </article>
+      <article class="tool-card">
+        <em>NEXT</em>
+        <h3>PDF Checker</h3>
+        <p>PDFがデータ化しやすい形式かを判定予定。</p>
+      </article>
+    </div>
+
+    <div id="roiPanel" class="panel hidden">
+      <h3>Automation ROI Calculator</h3>
+      <div class="calc">
+        <label>担当者の時給<input id="hourly" value="1800" min="0" type="number"></label>
+        <label>1回の作業時間（分）<input id="minutes" value="45" min="0" type="number"></label>
+        <label>月の実施回数<input id="monthly" value="20" min="0" type="number"></label>
+        <label>担当人数<input id="people" value="1" min="1" type="number"></label>
+      </div>
+      <button id="runCalc" class="cta">計算する</button>
+      <div id="result" class="result-box hidden"></div>
+    </div>
+
+    <div id="automationPanel" class="panel hidden">
+      <h3>Automation Check</h3>
+      <p class="muted">各項目を0〜2点で選んでください。</p>
+      <div class="question-grid">
+        <label>同じ作業を繰り返す頻度
+          <select data-auto-q><option value="0">月1回未満</option><option value="1">月1〜4回</option><option value="2">週1回以上</option></select>
+        </label>
+        <label>作業手順の固定度
+          <select data-auto-q><option value="0">毎回かなり違う</option><option value="1">一部は同じ</option><option value="2">ほぼ同じ</option></select>
+        </label>
+        <label>入力データの形式
+          <select data-auto-q><option value="0">紙・口頭中心</option><option value="1">混在</option><option value="2">Excel/CSV/フォーム中心</option></select>
+        </label>
+        <label>転記・コピー作業
+          <select data-auto-q><option value="0">ほぼない</option><option value="1">少しある</option><option value="2">多い</option></select>
+        </label>
+        <label>ミス時の手戻り
+          <select data-auto-q><option value="0">小さい</option><option value="1">中程度</option><option value="2">大きい</option></select>
+        </label>
+      </div>
+      <button id="runAutomation" class="cta">診断する</button>
+      <div id="automationResult" class="result-box hidden"></div>
+    </div>
+
+    <div id="csvPanel" class="panel hidden">
+      <h3>CSV Cleaner Scan</h3>
+      <p class="muted">ファイルはブラウザ内で解析し、JIZO WORKSへ送信しません。</p>
+      <input id="csvFile" type="file" accept=".csv,text/csv">
+      <div id="csvResult" class="result-box hidden"></div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="section">
+  <div class="wrap">
+    <h2>頼みたい仕事</h2>
+    <div class="grid">
+      <article><em>DATA</em><h3>Excel / CSV</h3><p>整理、重複除去、形式変換、定型処理。</p></article>
+      <article><em>DOCUMENT</em><h3>PDF / 帳票</h3><p>表・文書データの整理と変換。</p></article>
+      <article><em>AUTOMATION</em><h3>繰り返し作業</h3><p>毎週・毎月の作業を仕組みに。</p></article>
+      <article><em>AI</em><h3>AI業務改善</h3><p>AIを使う場所から一緒に決めます。</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap compare-strip">
+    <div><small>BEFORE</small><strong>45分</strong><span>手作業</span></div>
+    <div class="arrow">→</div>
+    <div><small>AFTER</small><strong>2分</strong><span>自動処理＋確認</span></div>
+  </div>
+  <p class="example-note">※上記は業務自動化のイメージ例であり、実績値や削減保証ではありません。</p>
+</section>
+
+<section id="discover" class="section">
+  <div class="wrap">
+    <h2>新しい道具と働き方を探す</h2>
+    <p class="muted">AI、テック、ゲーム、3D、バイブコーディング。カテゴリー別に広告・比較情報を整理します。</p>
+    <div class="chips">
+      <button data-topic="ai">AI</button>
+      <button data-topic="vibe">Vibe Coding</button>
+      <button data-topic="game">Game</button>
+      <button data-topic="3d">3D</button>
+      <button data-topic="pc">PC / Device</button>
+    </div>
+  </div>
+</section>
+
+<section id="deals" class="section deals">
+  <div class="wrap">
+    <div class="section-head">
+      <div><h2>関連サービス・Deals</h2><p>承認済み広告だけを表示します。</p></div>
+      <span class="privacy-pill">PRは明示</span>
+    </div>
+    <div id="ads" class="adgrid"></div>
+    <div id="empty" class="empty">現在、公開承認済みの広告はありません。</div>
+  </div>
+</section>
+
+<section class="light">
+  <div class="wrap statement">
+    <h2>AIを使える人だけが得をする社会にしない。</h2>
+    <p>技術を、分かる人だけのものではなく、使える道具へ。</p>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <h2>何を頼めばいいか分からなくても大丈夫です。</h2>
+      <p>相談内容から送信用の文章を作れます。</p>
+    </div>
+    <form id="contactForm">
+      <label>困っていること
+        <textarea id="problem" required placeholder="例：毎月CSVを手作業で整形しています"></textarea>
+      </label>
+      <label>予算の目安
+        <select id="budget">
+          <option>相談したい</option>
+          <option>〜5,000円</option>
+          <option>〜10,000円</option>
+          <option>〜30,000円</option>
+          <option>30,000円以上</option>
+        </select>
+      </label>
+      <button class="cta" type="submit">相談文を作る</button>
+    </form>
+    <div id="contactResult" class="result-box hidden"></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>JIZO WORKS PUBLIC v2</span>
+    <span>Public Web / Internal Ops separated</span>
+  </div>
+</footer>
+
+<script type="module" src="assets/app.js"></script>
+</body>
+</html>

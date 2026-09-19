@@ -1,0 +1,9 @@
+{
+  "name": "JIZO WORKS",
+  "short_name": "JIZO WORKS",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#09131f",
+  "theme_color": "#09131f",
+  "description": "面倒な仕事を、仕組みに変える。"
+}

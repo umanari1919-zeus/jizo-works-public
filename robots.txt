@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://umanari1919-zeus.github.io/jizo-works-public/sitemap.xml
