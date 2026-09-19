@@ -1,0 +1,6 @@
+[
+  {"id":"offer-ai-001","topic":"ai","name":"AI Coding Offer","status":"candidate","url":"","kind":"affiliate","disclosure":"PR","trust":70,"intent":86,"margin":68,"freshness":80},
+  {"id":"offer-game-001","topic":"game","name":"Gaming / Creator Offer","status":"candidate","url":"","kind":"affiliate","disclosure":"PR","trust":70,"intent":84,"margin":72,"freshness":80},
+  {"id":"offer-3d-001","topic":"3d","name":"3D Creator Offer","status":"candidate","url":"","kind":"affiliate","disclosure":"PR","trust":70,"intent":82,"margin":70,"freshness":80},
+  {"id":"offer-vibe-001","topic":"vibe","name":"Vibe Coding Offer","status":"candidate","url":"","kind":"affiliate","disclosure":"PR","trust":70,"intent":88,"margin":74,"freshness":80}
+]

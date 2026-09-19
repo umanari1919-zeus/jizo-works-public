@@ -38,3 +38,10 @@
   .arrow{transform:rotate(90deg)}
   .section-head{align-items:flex-start;flex-direction:column}
 }
+
+/* v3 revenue surfaces */
+.hero.compact{min-height:auto;padding:90px 0 70px}
+.hero.compact h1{font-size:clamp(48px,7vw,76px)}
+.kicker{color:#d8ad53!important;font-size:12px!important;letter-spacing:.14em;text-transform:uppercase}
+.footer-inner a{color:#aab6c2;text-decoration:none}
+.intent-card{display:block;text-decoration:none}

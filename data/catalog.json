@@ -1,0 +1,7 @@
+[
+  {"id":"ai","title":"AI","description":"AI開発・業務活用・生成AIツール","path":"discover/ai/"},
+  {"id":"vibe","title":"Vibe Coding","description":"AIコーディング・開発支援・プロトタイピング","path":"discover/vibe/"},
+  {"id":"game","title":"Game","description":"PCゲーム・ゲーミング環境・配信機材","path":"discover/game/"},
+  {"id":"3d","title":"3D","description":"3D制作・素材・クリエイターツール","path":"discover/3d/"},
+  {"id":"pc","title":"PC / Device","description":"PC・SSD・NAS・周辺機器","path":"discover/pc/"}
+]

@@ -1,0 +1,8 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Deals | JIZO WORKS</title><meta name="description" content="JIZO WORKS Deals。承認済みの広告・アフィリエイト案件だけをPR表記付きで掲載。"><link rel="stylesheet" href="../assets/styles.css"></head>
+<body><header><div class="wrap head"><a class="brand" href="../">JIZO WORKS</a><nav><a href="../compare/">比較</a><a href="../discover/game/">Game</a><a href="../discover/ai/">AI</a></nav></div></header>
+<main><section class="hero compact"><div class="wrap"><p class="kicker">DEALS</p><h1>必要なものだけ、見つける。</h1><p>案件数ではなく適合性を優先。広告はPRと明示します。</p></div></section>
+<section class="section"><div class="wrap"><div id="allOffers" class="adgrid"></div><div id="empty" class="empty">現在、公開承認済みのDealはありません。候補案件は審査中です。</div></div></section>
+</main><footer><div class="wrap footer-inner"><span>JIZO WORKS</span><button class="ghost" onclick="JIZO.exportEvents()">ローカル計測データを書き出す</button></div></footer>
+<script src="../assets/surface.js"></script><script>
+(async()=>{const r=await fetch("../data/offers.json",{cache:"no-store"}).then(x=>x.json());const rows=r.filter(x=>x.status==="approved").sort((a,b)=>((b.intent||0)+(b.trust||0))-((a.intent||0)+(a.trust||0)));const g=document.querySelector("#allOffers"),e=document.querySelector("#empty");e.style.display=rows.length?"none":"block";rows.forEach(x=>{const a=document.createElement("a");a.className="ad";a.href=x.url;a.rel="sponsored nofollow noopener";a.target="_blank";a.dataset.track="deal:"+x.id;a.innerHTML="<small>PR / "+x.topic+"</small><h3>"+x.name+"</h3><p>"+x.kind+"</p>";g.appendChild(a);});})();
+</script></body></html>

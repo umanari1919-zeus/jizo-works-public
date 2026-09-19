@@ -1,0 +1,11 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vibe Coding | JIZO WORKS</title><meta name="description" content="AIと対話しながら作る開発手法。試作から業務ツールまで。"><link rel="stylesheet" href="../../assets/styles.css"></head>
+<body><header><div class="wrap head"><a class="brand" href="../../">JIZO WORKS</a><nav><a href="../../#solve">解決する</a><a href="../../compare/">比較</a><a href="../../deals/">Deals</a></nav></div></header>
+<main><section class="hero compact"><div class="wrap"><p class="kicker">DISCOVER / Vibe Coding</p><h1>Vibe Coding</h1><p>AIと対話しながら作る開発手法。試作から業務ツールまで。</p></div></section>
+<section class="light"><div class="wrap"><h2>選び方</h2><div class="grid"><article><em>01</em><h3>目的から選ぶ</h3><p>流行より、解決したい仕事との適合を優先。</p></article><article><em>02</em><h3>総コストを見る</h3><p>月額だけでなく、移行・学習・保守も含めて比較。</p></article><article><em>03</em><h3>無料から試す</h3><p>無料枠や小規模検証で失敗コストを抑える。</p></article><article><em>04</em><h3>PRを分ける</h3><p>広告案件はPRと明示し、編集判断と分離。</p></article></div></div></section>
+<section class="section deals"><div class="wrap"><h2>関連オファー</h2><div id="offerGrid" class="adgrid"></div><div id="offerEmpty" class="empty">現在、公開承認済みのオファーはありません。</div></div></section>
+</main><footer><div class="wrap footer-inner"><span>JIZO WORKS</span><a href="../../">Home</a></div></footer>
+<script src="../../assets/surface.js"></script><script>
+(async()=>{const rows=await JIZO.loadOffers("vibe");const g=document.querySelector("#offerGrid"),e=document.querySelector("#offerEmpty");
+e.style.display=rows.length?"none":"block";rows.forEach(x=>{const a=document.createElement("a");a.className="ad";a.href=x.url;a.rel="sponsored nofollow noopener";a.target="_blank";a.dataset.track="offer:"+x.id;a.innerHTML="<small>PR / "+x.kind+"</small><h3>"+x.name+"</h3><p>適合スコア "+x.score.toFixed(1)+"</p>";g.appendChild(a);});})();
+</script></body></html>
