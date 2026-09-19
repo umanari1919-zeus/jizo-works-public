@@ -1,0 +1,72 @@
+[
+  {
+    "id":"a8-net",
+    "name":"A8.net",
+    "category":"ASP / Japan",
+    "status":"verified_source",
+    "application_url":"https://www.a8.net/",
+    "scope":["ai","pc","business","game"],
+    "notes":"日本向けASP。広告主ごとに即時提携または審査あり。",
+    "verified_on":"2026-09-20"
+  },
+  {
+    "id":"rakuten-affiliate",
+    "name":"楽天アフィリエイト",
+    "category":"Commerce / Japan",
+    "status":"verified_source",
+    "application_url":"https://affiliate.rakuten.co.jp/",
+    "scope":["pc","game","device","business"],
+    "notes":"楽天IDで利用開始可能。商品・サービス紹介向け。",
+    "verified_on":"2026-09-20"
+  },
+  {
+    "id":"amazon-associates-jp",
+    "name":"Amazonアソシエイト",
+    "category":"Commerce / Japan",
+    "status":"verified_source",
+    "application_url":"https://affiliate.amazon.co.jp/",
+    "scope":["pc","game","device","creator"],
+    "notes":"コンテンツ・Webメディア向けアフィリエイトプログラム。",
+    "verified_on":"2026-09-20"
+  },
+  {
+    "id":"valuecommerce",
+    "name":"バリューコマース アフィリエイト",
+    "category":"ASP / Japan",
+    "status":"verified_source",
+    "application_url":"https://aff.valuecommerce.ne.jp/reg/affiliate_presignup",
+    "scope":["business","pc","service"],
+    "notes":"公式仮登録フォーム確認済み。",
+    "verified_on":"2026-09-20"
+  },
+  {
+    "id":"adobe-affiliate",
+    "name":"Adobe Affiliate Program",
+    "category":"Creator / Software",
+    "status":"verified_source",
+    "application_url":"https://www.adobe.com/jp/affiliates.html",
+    "scope":["3d","creator","document","ai"],
+    "notes":"Adobe公式。Partnerize管理。承認後に専用リンクを発行。",
+    "verified_on":"2026-09-20"
+  },
+  {
+    "id":"unity-affiliate",
+    "name":"Unity Affiliate Program",
+    "category":"Game / 3D",
+    "status":"verified_source",
+    "application_url":"https://unity.com/partners/affiliates",
+    "scope":["game","3d","creator"],
+    "notes":"Unity公式。Partnerize管理。Web/SNS URLを用いた申請・審査あり。",
+    "verified_on":"2026-09-20"
+  },
+  {
+    "id":"envato-affiliate",
+    "name":"Envato Affiliate Program",
+    "category":"Creator / Assets",
+    "status":"verified_source",
+    "application_url":"https://help.author.envato.com/hc/en-us/articles/360000562263-The-Envato-Affiliate-Program",
+    "scope":["3d","creator","video","web"],
+    "notes":"Envato公式サポートで現行プログラム確認。Impact経由。",
+    "verified_on":"2026-09-20"
+  }
+]

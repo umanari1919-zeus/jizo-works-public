@@ -112,3 +112,44 @@ jobs:
               sys.exit(1)
 
           print("Monetization audit PASS")
+
+      - name: Validate verified partner sources
+        shell: python
+        run: |
+          import json, pathlib, sys
+          p=pathlib.Path("data/partner_sources.json")
+          rows=json.loads(p.read_text(encoding="utf-8"))
+          bad=[]
+          for x in rows:
+              if x.get("status")!="verified_source":
+                  bad.append(x.get("id"))
+              if not str(x.get("application_url","")).startswith("https://"):
+                  bad.append(x.get("id"))
+              if not x.get("verified_on"):
+                  bad.append(x.get("id"))
+          if bad:
+              print("Invalid partner sources:", sorted(set(bad)))
+              sys.exit(1)
+          print("Verified partner sources:", len(rows))
+
+      - name: Validate offer state machine
+        shell: python
+        run: |
+          import json, pathlib, sys
+          rows=json.loads(pathlib.Path("data/offers.json").read_text(encoding="utf-8"))
+          allowed={"candidate","approved","paused","rejected"}
+          ids=set()
+          bad=[]
+          for x in rows:
+              if x.get("id") in ids: bad.append("duplicate:"+str(x.get("id")))
+              ids.add(x.get("id"))
+              if x.get("status") not in allowed: bad.append("state:"+str(x.get("id")))
+              if x.get("status")=="approved":
+                  if not str(x.get("url","")).startswith("https://"):
+                      bad.append("url:"+str(x.get("id")))
+                  if not x.get("disclosure"):
+                      bad.append("disclosure:"+str(x.get("id")))
+          if bad:
+              print("Offer state audit failed:",bad)
+              sys.exit(1)
+          print("Offer state audit PASS")

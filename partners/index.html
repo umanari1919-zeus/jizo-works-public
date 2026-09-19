@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>提携プログラム候補 | JIZO WORKS</title>
+<meta name="description" content="JIZO WORKSが確認した広告・アフィリエイト提携元候補。提携・承認前の案件を広告として掲載しません。">
+<meta name="robots" content="noindex,nofollow">
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+<header><div class="wrap head"><a class="brand" href="../">JIZO WORKS</a><nav><a href="../sponsor/">スポンサー</a><a href="../disclosure/">広告表記</a></nav></div></header>
+<main>
+<section class="hero compact"><div class="wrap"><p class="kicker">PARTNER SOURCES</p><h1>実案件は、<br>承認されてから出す。</h1><p>公式に存在を確認できた提携先候補だけを管理します。ここにあるだけでは広告掲載されません。</p></div></section>
+<section class="light"><div class="wrap"><div id="partnerGrid" class="grid"></div></div></section>
+</main>
+<footer><div class="wrap footer-inner"><span>JIZO WORKS</span><a href="../">Home</a></div></footer>
+<script>
+(async()=>{
+  const rows=await fetch("../data/partner_sources.json",{cache:"no-store"}).then(r=>r.json());
+  const grid=document.querySelector("#partnerGrid");
+  rows.forEach(x=>{
+    const a=document.createElement("article");
+    a.innerHTML=`<em>${x.category}</em><h3>${x.name}</h3><p>${x.notes}</p><p><small>確認日 ${x.verified_on}</small></p><a class="ghost" href="${x.application_url}" target="_blank" rel="noopener nofollow">公式ページを開く →</a>`;
+    grid.appendChild(a);
+  });
+})();
+</script>
+</body>
+</html>
