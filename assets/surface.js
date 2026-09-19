@@ -32,11 +32,10 @@ const JIZO = (() => {
       .sort((a,b)=>b.score-a.score);
   }
 
-  function bindTrackedLinks() {
-    document.querySelectorAll("[data-track]").forEach(a=>{
-      a.addEventListener("click",()=>capture("click",{target:a.dataset.track}));
-    });
-  }
+  document.addEventListener("click", event => {
+    const target=event.target.closest?.("[data-track]");
+    if(target) capture("click",{target:target.dataset.track});
+  });
 
   function exportEvents() {
     const blob=new Blob([localStorage.getItem(STORE)||"[]"],{type:"application/json"});
@@ -48,7 +47,6 @@ const JIZO = (() => {
   }
 
   capture("page_view");
-  bindTrackedLinks();
   return {capture,loadOffers,exportEvents};
 })();
 window.JIZO=JIZO;

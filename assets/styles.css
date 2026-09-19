@@ -45,3 +45,7 @@
 .kicker{color:#d8ad53!important;font-size:12px!important;letter-spacing:.14em;text-transform:uppercase}
 .footer-inner a{color:#aab6c2;text-decoration:none}
 .intent-card{display:block;text-decoration:none}
+
+/* v4 conversion */
+.price{font-size:28px;font-weight:900;color:#8a6e2f}
+.panel .ghost{margin-top:8px;width:max-content}

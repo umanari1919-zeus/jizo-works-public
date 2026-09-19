@@ -1,0 +1,10 @@
+{
+  "brand": "JIZO WORKS",
+  "contact_mode": "copy_only",
+  "contact_destination": "",
+  "currency": "JPY",
+  "privacy": {
+    "csv_processing": "browser_only",
+    "telemetry": "local_storage_only"
+  }
+}

@@ -50,3 +50,13 @@ jobs:
 
           print("Approved ads:", sum(r.get("status") == "approved" for r in rows))
           print("Ad inventory audit PASS")
+
+      - name: Validate public config
+        shell: python
+        run: |
+          import json, pathlib, sys
+          config=json.loads(pathlib.Path("data/public_config.json").read_text(encoding="utf-8"))
+          if config.get("contact_mode") not in {"copy_only","mailto","form_endpoint"}:
+              print("Invalid contact_mode")
+              sys.exit(1)
+          print("Public config audit PASS")

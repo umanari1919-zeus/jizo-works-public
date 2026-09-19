@@ -138,13 +138,31 @@ document.querySelector("#csvFile")?.addEventListener("change", async e => {
   const emptyRate = (emptyCells / totalCells) * 100;
 
   out.classList.remove("hidden");
+  const cleanRows = [header, ...data.filter((row, index) => normalizedRows.indexOf(normalizedRows[index]) === index)];
+  const quoteCell = value => {
+    const v = String(value ?? "");
+    return /[",\r\n]/.test(v) ? `"${v.replaceAll(`"`, `""`)}"` : v;
+  };
+  const cleanedText = cleanRows.map(r => r.map(quoteCell).join(",")).join("\r\n");
+  window.jizoCsvCleanedBlob = new Blob([cleanedText], { type: "text/csv;charset=utf-8" });
+
   out.innerHTML = `
     <strong>${yen.format(data.length)} 行 × ${yen.format(header.length)} 列</strong>
     <span>空欄セル ${yen.format(emptyCells)}（${emptyRate.toFixed(1)}%）</span>
     <span>完全重複行 ${yen.format(duplicates)} 件</span>
     <span>列数不一致 ${yen.format(inconsistent)} 行</span>
-    <small>解析はこのブラウザ内だけで実行しました。ファイルはサーバーへ送信していません。</small>
+    <button id="downloadCleanedCsv" class="ghost">重複除去版CSVをダウンロード</button>
+    <small>解析と生成はこのブラウザ内だけで実行しました。ファイルはサーバーへ送信していません。</small>
   `;
+
+  document.querySelector("#downloadCleanedCsv")?.addEventListener("click", () => {
+    const url = URL.createObjectURL(window.jizoCsvCleanedBlob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "cleaned.csv";
+    a.click();
+    URL.revokeObjectURL(url);
+  });
 });
 
 let topic = "all";
@@ -234,3 +252,4 @@ ${budget}`;
     document.querySelector("#copyContact").textContent = "コピーしました";
   });
 });
+
