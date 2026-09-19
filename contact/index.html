@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>無料相談 | JIZO WORKS</title>
+<meta name="description" content="JIZO WORKSへの無料相談。困りごと、予算、納期を整理して相談文を作成できます。">
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+<header><div class="wrap head"><a class="brand" href="../">JIZO WORKS</a><nav><a href="../services/">サービス</a><a href="../#solve">無料ツール</a><a href="../quality/">品質・安全</a></nav></div></header>
+
+<main>
+<section class="hero compact">
+<div class="wrap">
+<p class="kicker">FREE CONSULTATION</p>
+<h1>何を頼めばいいか、<br>分からなくても大丈夫です。</h1>
+<p>困っていることを入力すると、相談内容を整理して送信用の文章を作ります。</p>
+</div>
+</section>
+
+<section class="light">
+<div class="wrap">
+<div class="panel">
+<form id="intakeForm" class="intake-form">
+  <label>相談したい内容
+    <select id="serviceType">
+      <option>Excel / CSV 整理</option>
+      <option>PDF / 帳票</option>
+      <option>業務自動化</option>
+      <option>AI業務改善</option>
+      <option>何を頼めばよいか分からない</option>
+    </select>
+  </label>
+
+  <label>困っていること
+    <textarea id="problem" required placeholder="例：毎月複数のCSVを手作業で結合・整形しています"></textarea>
+  </label>
+
+  <div class="question-grid">
+    <label>予算目安
+      <select id="budget">
+        <option>相談したい</option>
+        <option>〜5,000円</option>
+        <option>〜10,000円</option>
+        <option>〜30,000円</option>
+        <option>30,000円以上</option>
+      </select>
+    </label>
+
+    <label>希望時期
+      <select id="deadline">
+        <option>急ぎではない</option>
+        <option>1週間以内</option>
+        <option>2週間以内</option>
+        <option>1か月以内</option>
+      </select>
+    </label>
+  </div>
+
+  <label class="checkline">
+    <input id="consent" type="checkbox" required>
+    <span>入力内容を相談文の作成・送信に利用することに同意します。</span>
+  </label>
+
+  <button class="cta" type="submit">相談内容を作成する</button>
+</form>
+
+<div id="intakeResult" class="result-box hidden"></div>
+</div>
+</div>
+</section>
+</main>
+
+<footer><div class="wrap footer-inner"><span>JIZO WORKS</span><a href="../privacy/">プライバシー</a></div></footer>
+
+<script src="../assets/surface.js"></script>
+<script type="module">
+const config=await fetch("../data/public_config.json",{cache:"no-store"}).then(r=>r.json());
+
+const form=document.querySelector("#intakeForm");
+const result=document.querySelector("#intakeResult");
+
+function makeId(){
+  const d=new Date();
+  const y=d.getFullYear();
+  const m=String(d.getMonth()+1).padStart(2,"0");
+  const day=String(d.getDate()).padStart(2,"0");
+  const rand=Math.random().toString(36).slice(2,8).toUpperCase();
+  return `JZ-${y}${m}${day}-${rand}`;
+}
+
+form.addEventListener("submit", async e=>{
+  e.preventDefault();
+
+  const id=makeId();
+  const service=document.querySelector("#serviceType").value;
+  const problem=document.querySelector("#problem").value.trim();
+  const budget=document.querySelector("#budget").value;
+  const deadline=document.querySelector("#deadline").value;
+
+  const body=
+`JIZO WORKS 無料相談
+案件ID: ${id}
+
+相談内容:
+${service}
+
+困っていること:
+${problem}
+
+予算目安:
+${budget}
+
+希望時期:
+${deadline}`;
+
+  localStorage.setItem("jizo_last_inquiry",JSON.stringify({
+    id,service,problem,budget,deadline,createdAt:new Date().toISOString()
+  }));
+
+  JIZO.capture("lead_created",{id,service,budget,deadline});
+
+  let actionHtml = `
+    <button id="copyInquiry" class="ghost">相談文をコピー</button>
+  `;
+
+  if(config.contact_mode==="mailto" && config.contact_destination){
+    const href=`mailto:${encodeURIComponent(config.contact_destination)}?subject=${encodeURIComponent("JIZO WORKS 無料相談 "+id)}&body=${encodeURIComponent(body)}`;
+    actionHtml += `<a class="cta" data-track="lead:mailto" href="${href}">メールで送る</a>`;
+  }
+
+  if(config.contact_mode==="form_endpoint" && config.contact_destination){
+    try{
+      const res=await fetch(config.contact_destination,{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({id,service,problem,budget,deadline})
+      });
+      if(res.ok){
+        JIZO.capture("lead_submitted",{id});
+        actionHtml += `<span class="status-ok">送信済み</span>`;
+      }else{
+        actionHtml += `<span class="status-warn">自動送信できませんでした。コピーしてご利用ください。</span>`;
+      }
+    }catch{
+      actionHtml += `<span class="status-warn">自動送信できませんでした。コピーしてご利用ください。</span>`;
+    }
+  }
+
+  result.classList.remove("hidden");
+  result.innerHTML=`
+    <strong>相談ID ${id}</strong>
+    <textarea id="inquiryText" readonly>${body}</textarea>
+    <div class="hero-actions">${actionHtml}</div>
+    <small>現在の送信方式: ${config.contact_mode}</small>
+  `;
+
+  document.querySelector("#copyInquiry")?.addEventListener("click", async()=>{
+    await navigator.clipboard.writeText(body);
+    document.querySelector("#copyInquiry").textContent="コピーしました";
+    JIZO.capture("lead_copied",{id});
+  });
+});
+</script>
+</body>
+</html>

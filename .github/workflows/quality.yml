@@ -60,3 +60,26 @@ jobs:
               print("Invalid contact_mode")
               sys.exit(1)
           print("Public config audit PASS")
+
+      - name: Validate sales intake surfaces
+        shell: python
+        run: |
+          import json, pathlib, sys
+          required = [
+              pathlib.Path("contact/index.html"),
+              pathlib.Path("quality/index.html"),
+              pathlib.Path("privacy/index.html"),
+              pathlib.Path("templates/index.html"),
+              pathlib.Path("templates/automation-work-inventory.csv"),
+          ]
+          missing=[str(p) for p in required if not p.exists()]
+          if missing:
+              print("Missing intake surfaces:", missing)
+              sys.exit(1)
+          cfg=json.loads(pathlib.Path("data/public_config.json").read_text(encoding="utf-8"))
+          mode=cfg.get("contact_mode")
+          dest=cfg.get("contact_destination","")
+          if mode in {"mailto","form_endpoint"} and not dest:
+              print("Contact destination required for", mode)
+              sys.exit(1)
+          print("Sales intake surface audit PASS")

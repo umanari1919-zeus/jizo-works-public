@@ -49,3 +49,13 @@
 /* v4 conversion */
 .price{font-size:28px;font-weight:900;color:#8a6e2f}
 .panel .ghost{margin-top:8px;width:max-content}
+
+/* v5 intake */
+.intake-form{display:grid;gap:16px}
+.intake-form>label{display:grid;gap:7px}
+.intake-form textarea{min-height:150px;resize:vertical}
+.checkline{display:flex!important;grid-template-columns:auto 1fr!important;align-items:flex-start;gap:10px!important}
+.checkline input{margin-top:4px}
+.status-ok{color:#55b987;font-weight:800}
+.status-warn{color:#d6a348;font-weight:800}
+.result-box textarea{min-height:220px;background:#fff;color:#17222d}
