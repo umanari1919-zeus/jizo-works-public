@@ -1,0 +1,41 @@
+[
+  {
+    "id": "candidate-ai-001",
+    "name": "AI Coding Offer",
+    "category": "AI / Vibe Coding",
+    "topics": [
+      "ai",
+      "vibe"
+    ],
+    "status": "candidate",
+    "url": "",
+    "description": "提携承認後に公開",
+    "score": 86
+  },
+  {
+    "id": "candidate-game-001",
+    "name": "Gaming / Creator Offer",
+    "category": "Game",
+    "topics": [
+      "game",
+      "pc"
+    ],
+    "status": "candidate",
+    "url": "",
+    "description": "提携承認後に公開",
+    "score": 84
+  },
+  {
+    "id": "candidate-3d-001",
+    "name": "3D Creator Offer",
+    "category": "3D",
+    "topics": [
+      "3d",
+      "vibe"
+    ],
+    "status": "candidate",
+    "url": "",
+    "description": "提携承認後に公開",
+    "score": 82
+  }
+]

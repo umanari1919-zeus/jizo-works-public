@@ -1,0 +1,22 @@
+name: Public Quality Gate
+on: [push, pull_request]
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Block internal/private leakage
+        shell: bash
+        run: |
+          if grep -RniE "mykeibadb|127\.0\.0\.1:8790|Founder Approval|revenue_ledger|crm\.csv|OPENAI_API_KEY|sk-[A-Za-z0-9_-]+" . --exclude-dir=.git; then
+            echo "Potential private/internal data leak"
+            exit 1
+          fi
+      - name: Validate ad inventory
+        shell: python
+        run: |
+          import json,sys
+          rows=json.load(open("data/ad_inventory.json",encoding="utf-8"))
+          bad=[x["id"] for x in rows if x.get("status")=="approved" and not x.get("url")]
+          print("approved ads",sum(x.get("status")=="approved" for x in rows))
+          sys.exit(1 if bad else 0)
