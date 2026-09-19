@@ -1,0 +1,15 @@
+{
+  "policy": {
+    "approved_only": true,
+    "require_disclosure": true,
+    "max_offers_per_surface": 6,
+    "editorial_separation": true
+  },
+  "weights": {
+    "intent": 0.35,
+    "trust": 0.30,
+    "revenue": 0.20,
+    "freshness": 0.10,
+    "fit": 0.05
+  }
+}

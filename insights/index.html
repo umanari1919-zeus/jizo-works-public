@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Local Insights | JIZO WORKS</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+<header><div class="wrap head"><a class="brand" href="../">JIZO WORKS</a></div></header>
+<main><section class="hero compact"><div class="wrap"><p class="kicker">LOCAL INSIGHTS</p><h1>このブラウザの反応を見る。</h1><p>サーバー分析ではなく、この端末のlocalStorageだけを集計します。</p></div></section>
+<section class="light"><div class="wrap"><div id="metrics" class="grid"></div><p><button id="export" class="ghost">イベントJSONを書き出す</button></p></div></section></main>
+<script src="../assets/surface.js"></script>
+<script>
+const rows=JSON.parse(localStorage.getItem("jizo_public_events_v1")||"[]");
+const count=t=>rows.filter(x=>x.type===t).length;
+const items=[
+ ["Page Views",count("page_view")],
+ ["Clicks",count("click")],
+ ["Leads Created",count("lead_created")],
+ ["Leads Copied",count("lead_copied")],
+ ["Quotes",count("quote_estimate")]
+];
+document.querySelector("#metrics").innerHTML=items.map(([k,v])=>`<article><em>LOCAL</em><h3>${k}</h3><p class="metric">${v}</p></article>`).join("");
+document.querySelector("#export").onclick=()=>JIZO.exportEvents();
+</script>
+</body></html>

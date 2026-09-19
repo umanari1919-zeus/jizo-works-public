@@ -83,3 +83,32 @@ jobs:
               print("Contact destination required for", mode)
               sys.exit(1)
           print("Sales intake surface audit PASS")
+
+      - name: Validate monetization surfaces
+        shell: python
+        run: |
+          import csv, json, pathlib, sys
+          required=[
+              "data/monetization.json",
+              "data/offers-import-template.csv",
+              "sponsor/index.html",
+              "disclosure/index.html",
+              "articles/index.html",
+              "assets/monetization.js"
+          ]
+          missing=[p for p in required if not pathlib.Path(p).exists()]
+          if missing:
+              print("Missing monetization surfaces:",missing)
+              sys.exit(1)
+
+          rows=json.loads(pathlib.Path("data/offers.json").read_text(encoding="utf-8"))
+          bad=[]
+          for x in rows:
+              if x.get("status")=="approved":
+                  if not x.get("url") or not x.get("disclosure"):
+                      bad.append(x.get("id"))
+          if bad:
+              print("Invalid approved offers:",bad)
+              sys.exit(1)
+
+          print("Monetization audit PASS")

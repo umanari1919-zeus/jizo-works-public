@@ -59,3 +59,8 @@
 .status-ok{color:#55b987;font-weight:800}
 .status-warn{color:#d6a348;font-weight:800}
 .result-box textarea{min-height:220px;background:#fff;color:#17222d}
+
+/* v6 monetization */
+.article{max-width:780px}
+.article h2{margin-top:38px}
+.metric{font-size:42px;font-weight:900;color:#8a6e2f}
