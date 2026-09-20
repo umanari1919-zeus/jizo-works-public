@@ -1,7 +1,7 @@
 {
   "brand": "JIZO WORKS",
-  "contact_mode": "copy_only",
-  "contact_destination": "",
+  "contact_mode": "mailto",
+  "contact_destination": "jizoworks.office@gmail.com",
   "currency": "JPY",
   "privacy": {
     "csv_processing": "browser_only",
